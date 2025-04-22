@@ -110,16 +110,3 @@ print("✅ تم حفظ النموذج والـ Label Encoder بنجاح.")
 model = joblib.load("model.pkl")
 label_encoder = joblib.load("label_encoder.pkl")
 
-# افترض أن لديك صورة جديدة تحتاج إلى تصنيفها
-img_path = "new_image.jpg"  # ضع مسار الصورة الجديدة هنا
-img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-if img is not None:
-    img = cv2.resize(img, image_size)
-    img_flattened = img.flatten().reshape(1, -1)  # تحويل الصورة إلى شكل متوافق مع النموذج
-
-    # التنبؤ باستخدام النموذج المحمّل
-    prediction = model.predict(img_flattened)
-    predicted_label = label_encoder.inverse_transform(prediction)
-    print(f"تم تصنيف الصورة إلى الفئة: {predicted_label[0]}")
-else:
-    print("لم يتم العثور على الصورة.")
