@@ -2,7 +2,7 @@ import cv2
 import winsound
 import os
 
-# تحميل مصنف الوجه
+#تحميل مصنف الوجه
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # فتح الكاميرا
