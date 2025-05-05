@@ -1,3 +1,4 @@
+
 import tkinter as tk
 from tkinter import filedialog, Label, Button
 import cv2
@@ -8,14 +9,14 @@ import os
 from PIL import Image, ImageTk
 import joblib
 
-# ----------------- تحميل النموذج المدرب مسبقاً ------------------
-model = joblib.load("model.pkl")  # تأكد أنك خزنت النموذج بهذا الاسم بعد التدريب
+# ----------------- تحميل النموذج ------------------
+model = joblib.load("model.pkl")
 le = joblib.load("label_encoder.pkl")
 
-# ----------------- دالة لاستخراج الميزات من الصورة ------------------
+# ----------------- استخراج الميزات ------------------
 def extract_features(image_path):
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-    img = cv2.resize(img, (100, 100))  # نفس الحجم اللي درّبت عليه
+    img = cv2.resize(img, (100, 100))
     return img.flatten()
 
 # ----------------- واجهة المستخدم ------------------
@@ -42,7 +43,6 @@ def open_image():
 root = tk.Tk()
 root.title("Real and Fake Detection")
 root.geometry("500x400")
-
 
 btn = Button(root, text="Choose Picture", command=open_image, font=("Arial", 14))
 btn.pack(pady=10)
